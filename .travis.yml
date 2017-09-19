@@ -4,7 +4,7 @@ php:
   - 7.1
 
 before_script:
-  - cp .env.travis .env
+  - cp .env.travis .env.example
   - mysql -e 'create database db_testing';
   - composer self-update
   - composer install --no-interaction
