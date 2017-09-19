@@ -4,14 +4,14 @@ php:
   - 7.1
 
 before_script:
-  - cp .env.travis .env.example
+  - cp .env.travis .env
   - mysql -e 'create database db_testing';
   - composer self-update
   - composer install --no-interaction
   ## - php artisan migrate
+  - php artisan key:generate
 
 script:
-  - php artisan key:generate
   - vendor/bin/phpunit
 
 after_success:
