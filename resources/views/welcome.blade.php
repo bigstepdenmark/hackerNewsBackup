@@ -68,7 +68,7 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
-                    Welcome to Hacker News
+                    Welcome to Hacker News !
                 </div>
                 <p>Ismail Cam, Mazlum D. Sert, Mert Turan, Mustafa, Kristijan Krsteski</p>
             </div>
