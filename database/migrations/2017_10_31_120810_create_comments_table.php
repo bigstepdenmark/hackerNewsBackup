@@ -23,6 +23,9 @@ class CreateCommentsTable extends Migration
             $table->unsignedInteger('story_id');
             $table->foreign('story_id')->references('id')->on('stories');
 
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+
             $table->timestamps();
         });
     }
