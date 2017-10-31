@@ -1,5 +1,13 @@
 # Hacker News Back-End
 
+### Group
+Group 3
+- Ismail Cam
+- Mazlum D. Sert
+- Mustafa Hakimi
+- Mert Turan
+- Kristijan Krsteski
+---
 ### System Requirements
 ##### Language & Framework
 - PHP 7.1
