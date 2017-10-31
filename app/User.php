@@ -14,16 +14,27 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $fillable = [ 'name',
+                            'username',
+                            'password',
+                            'karma_points',
+                            'about' ];
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    protected $hidden = [ 'password',
+                          'remember_token', ];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Relations
+    |--------------------------------------------------------------------------
+    */
+    public function stories()
+    {
+        return $this->hasMany( Story::class );
+    }
 }
