@@ -1,11 +1,11 @@
 # Hacker News Back-End
 
 ### Group 3
-- Ismail Cam
-- Mazlum D. Sert
-- Mustafa Hakimi
-- Mert Turan
-- Kristijan Krsteski
+- __Lead Developer:__ Ismail Cam
+- __Architect:__ Mazlum D. Sert
+- __Product Owner:__ Mustafa Hakimi
+- __DevOps:__ Mert Turan
+- __Lead Tester:__ Kristijan Krsteski
 ---
 ### System Requirements
 ##### Language & Framework
