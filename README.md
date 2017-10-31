@@ -1,7 +1,6 @@
 # Hacker News Back-End
 
-### Group
-Group 3
+### Group 3
 - Ismail Cam
 - Mazlum D. Sert
 - Mustafa Hakimi
