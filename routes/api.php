@@ -22,3 +22,4 @@ Route::get('hello', function() {
 });
 
 Route::get('users', 'UserController@index');
+Route::get('stories', 'StoryController@index');
