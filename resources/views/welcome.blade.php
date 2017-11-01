@@ -1,77 +1,61 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HackerNews</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+    <style>
+        .mar {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+<section class="section">
+    <div class="container">
+        <h1 class="title">
+            Welcome to Hacker News API - Group 3
+        </h1>
+        <p class="subtitle">
+            <strong>By</strong> Ismail Cam, Mazlum D. Sert, Mert Turan, Mustafa, Kristijan Krsteski
+        </p>
 
-        <title>Laravel</title>
+        <hr>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <h4 class="title is-4">Users</h4>
+        <p>Retrieve all users</p>
+        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/users</pre>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+        <p>Retrieve user by id</p>
+        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/users/by-id/<span class="has-text-info">{id}</span> </pre>
 
-            .full-height {
-                height: 100vh;
-            }
+        <p>Retrieve user by username</p>
+        <pre><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/users/by-username/<span class="has-text-info">{username}</span></pre>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+        <hr>
 
-            .position-ref {
-                position: relative;
-            }
+        <h4 class="title is-4">Stories</h4>
+        <p>Retrieve all stories</p>
+        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/stories</pre>
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+        <p>Retrieve story by id</p>
+        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/stories/<span class="has-text-info">{id}</span></pre>
 
-            .content {
-                text-align: center;
-            }
+        <hr>
 
-            .title {
-                font-size: 84px;
-            }
+        <h4 class="title is-4">Comments</h4>
+        <p>Retrieve all comments</p>
+        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/comments</pre>
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+        <p>Retrieve comments by id</p>
+        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/comments/<span class="has-text-info">{id}</span></pre>
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            <div class="content">
-                <div class="title m-b-md">
-                    Welcome to Hacker News !
-                </div>
-                <p>Ismail Cam, Mazlum D. Sert, Mert Turan, Mustafa, Kristijan Krsteski</p>
-            </div>
-        </div>
-    </body>
+        <p>Retrieve comments by story id</p>
+        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/stories/<span class="has-text-info">{id}</span>/comments</pre>
+
+    </div>
+</section>
+</body>
 </html>

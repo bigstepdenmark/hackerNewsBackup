@@ -18,4 +18,9 @@ class UserController extends Controller
     {
         return new UserResource( $user );
     }
+
+    public function showByUsername( $username )
+    {
+        return new UserResource( User::where( 'username', $username )->first() );
+    }
 }

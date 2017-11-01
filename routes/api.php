@@ -23,12 +23,14 @@ Route::get('hello', function() {
 
 Route::middleware( [ 'cors' ] )->prefix( 'users' )->as( 'users.' )->group( function() {
     Route::get('/', 'UserController@index')->name('index');
-    Route::get('/{user}', 'UserController@show')->name('show');
+    Route::get('/by-id/{user}', 'UserController@show')->name('show');
+    Route::get('/by-username/{username}', 'UserController@showByUsername')->name('show.byusername');
 } );
 
 Route::middleware( [ 'cors' ] )->prefix( 'stories' )->as( 'stories.' )->group( function() {
     Route::get('/', 'StoryController@index')->name('index');
     Route::get('/{story}', 'StoryController@show')->name('show');
+    Route::get('/{story}/comments', 'StoryController@comments')->name('show.comments');
 } );
 
 Route::middleware( [ 'cors' ] )->prefix( 'comments' )->as( 'comments.' )->group( function() {
