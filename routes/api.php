@@ -21,5 +21,5 @@ Route::get('hello', function() {
     return response()->json(['message' => 'Hello world']);
 });
 
-Route::get('users', 'UserController@index');
-Route::get('stories', 'StoryController@index');
+Route::middleware('guest:api')->get('users', 'UserController@index');
+Route::middleware('guest:api')->get('stories', 'StoryController@index');
