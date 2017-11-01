@@ -11,7 +11,11 @@ class StoryController extends Controller
 {
     public function index()
     {
-        //return new StoryResource( Story::first() );
         return new StoryCollection( Story::all() );
+    }
+
+    public function show( Story $story )
+    {
+        return new StoryResource( $story );
     }
 }

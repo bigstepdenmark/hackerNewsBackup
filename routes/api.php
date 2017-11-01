@@ -21,5 +21,17 @@ Route::get('hello', function() {
     return response()->json(['message' => 'Hello world']);
 });
 
-Route::middleware('cors')->get('users', 'UserController@index');
-Route::middleware('cors')->get('stories', 'StoryController@index');
+Route::middleware( [ 'cors' ] )->prefix( 'users' )->as( 'users.' )->group( function() {
+    Route::get('/', 'UserController@index')->name('index');
+    Route::get('/{user}', 'UserController@show')->name('show');
+} );
+
+Route::middleware( [ 'cors' ] )->prefix( 'stories' )->as( 'stories.' )->group( function() {
+    Route::get('/', 'StoryController@index')->name('index');
+    Route::get('/{story}', 'StoryController@show')->name('show');
+} );
+
+Route::middleware( [ 'cors' ] )->prefix( 'comments' )->as( 'comments.' )->group( function() {
+    Route::get('/', 'CommentController@index')->name('index');
+    Route::get('/{comment}', 'CommentController@show')->name('show');
+} );

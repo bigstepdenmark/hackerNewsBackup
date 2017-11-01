@@ -11,8 +11,11 @@ class UserController extends Controller
 {
     public function index()
     {
-        // return new UserResource( User::find( 1 ) );
-        //return UserResource::collection( User::all() );
-        return new UserCollection(User::all());
+        return new UserCollection( User::all() );
+    }
+
+    public function show( User $user )
+    {
+        return new UserResource( $user );
     }
 }
