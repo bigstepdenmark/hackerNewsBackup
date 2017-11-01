@@ -21,5 +21,5 @@ Route::get('hello', function() {
     return response()->json(['message' => 'Hello world']);
 });
 
-Route::middleware('guest:api')->get('users', 'UserController@index');
-Route::middleware('guest:api')->get('stories', 'StoryController@index');
+Route::middleware('cors')->get('users', 'UserController@index');
+Route::middleware('cors')->get('stories', 'StoryController@index');
