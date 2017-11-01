@@ -1,8 +1,8 @@
 <?php
 
 use Faker\Generator as Faker;
-use \App\Story as Story;
-use \App\User as User;
+use \App\Story;
+use \App\User;
 
 $factory->define( App\Comment::class,
     function( Faker $faker ) use ( $factory ) {

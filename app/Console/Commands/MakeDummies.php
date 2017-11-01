@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Comment;
 use App\Story;
+use App\Type;
 use App\User;
 use Illuminate\Console\Command;
 
@@ -70,6 +71,7 @@ class MakeDummies extends Command
 
         // Creating dummies.
         factory( User::class, $quantity )->create();
+        $this->createStoryTypes();
         factory( Story::class, $quantity )->create();
         factory( Comment::class, $quantity )->create();
 
@@ -89,6 +91,17 @@ class MakeDummies extends Command
         foreach( $comments as $comment )
         {
             $comment->update( [ 'parent_id' => $comments->random()->id ] );
+        }
+    }
+
+    private function createStoryTypes()
+    {
+        if( Type::all()->count() !== 4 )
+        {
+            Type::insert( [ [ 'title' => 'story' ],
+                            [ 'title' => 'comment' ],
+                            [ 'title' => 'poll' ],
+                            [ 'title' => 'pollopt' ], ] );
         }
     }
 }
