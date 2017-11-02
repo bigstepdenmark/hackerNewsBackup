@@ -11,5 +11,5 @@ class UnreadablePost extends Model
      *
      * @var array
      */
-    protected $fillable = [ 'title' ];
+    protected $fillable = [ 'post' ];
 }

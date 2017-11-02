@@ -21,6 +21,12 @@ Route::get('hello', function() {
     return response()->json(['message' => 'Hello world']);
 });
 
+
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+*/
 Route::middleware( [ 'cors' ] )->prefix( 'users' )->as( 'users.' )->group( function() {
     Route::get('/', 'UserController@index')->name('index');
     Route::get('/by-id/{user}', 'UserController@show')->name('show');
@@ -37,3 +43,10 @@ Route::middleware( [ 'cors' ] )->prefix( 'comments' )->as( 'comments.' )->group(
     Route::get('/', 'CommentController@index')->name('index');
     Route::get('/{comment}', 'CommentController@show')->name('show');
 } );
+
+Route::middleware( [ 'cors' ] )->prefix( 'post' )->as( 'post.' )->group( function() {
+    Route::post('/', 'PostController@store')->name('store');
+} );
+
+Route::middleware( [ 'cors' ] )->get('/latest', 'PostController@lastPost')->name('latest');
+Route::middleware( [ 'cors' ] )->get('/status', 'PostController@status')->name('status');

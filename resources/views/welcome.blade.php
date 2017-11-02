@@ -26,34 +26,58 @@
 
         <h4 class="title is-4">Users</h4>
         <p>Retrieve all users</p>
-        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/users</pre>
+        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/users<hr><span class="tag is-rounded is-dark">RESPONSE</span> Collection</pre>
 
         <p>Retrieve user by id</p>
-        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/users/by-id/<span class="has-text-info">{id}</span> </pre>
+        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/users/by-id/<span class="has-text-info">{id}</span><hr><span class="tag is-rounded is-dark">RESPONSE</span> Object</pre>
 
         <p>Retrieve user by username</p>
-        <pre><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/users/by-username/<span class="has-text-info">{username}</span></pre>
+        <pre><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/users/by-username/<span class="has-text-info">{username}</span><hr><span class="tag is-rounded is-dark">RESPONSE</span> Object</pre>
 
         <hr>
 
         <h4 class="title is-4">Stories</h4>
         <p>Retrieve all stories</p>
-        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/stories</pre>
+        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/stories<hr><span class="tag is-rounded is-dark">RESPONSE</span> Collection</pre>
 
         <p>Retrieve story by id</p>
-        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/stories/<span class="has-text-info">{id}</span></pre>
+        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/stories/<span class="has-text-info">{id}</span><hr><span class="tag is-rounded is-dark">RESPONSE</span> Object</pre>
 
         <hr>
 
         <h4 class="title is-4">Comments</h4>
         <p>Retrieve all comments</p>
-        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/comments</pre>
+        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/comments<hr><span class="tag is-rounded is-dark">RESPONSE</span> Collection</pre>
 
         <p>Retrieve comments by id</p>
-        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/comments/<span class="has-text-info">{id}</span></pre>
+        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/comments/<span class="has-text-info">{id}</span><hr><span class="tag is-rounded is-dark">RESPONSE</span> Collection</pre>
 
         <p>Retrieve comments by story id</p>
-        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/stories/<span class="has-text-info">{id}</span>/comments</pre>
+        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/stories/<span class="has-text-info">{id}</span>/comments<hr><span class="tag is-rounded is-dark">RESPONSE</span> Collection</pre>
+
+        <hr>
+
+        <h4 class="title is-4">Simulator</h4>
+        <p>Post data</p>
+        <pre class="mar"><span class="tag is-rounded is-success">POST</span> http://165.227.136.184/api/post</pre>
+
+        <p>Request body</p>
+        <pre class="mar">{
+    "username": "string",
+    "post_type": "string",
+    "pwd_hash": "string",
+    "post_title": "string",
+    "post_url": "string",
+    "post_parent": int,
+    "hanesst_id": int,
+    "post_text": "string"
+}</pre>
+
+        <p>Retrieve latest digested Post</p>
+        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/latest<hr><span class="tag is-rounded is-dark">RESPONSE</span> int</pre>
+
+        <p>Retrieve status information</p>
+        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/status<hr><span class="tag is-rounded is-dark">RESPONSE</span> string : Alive | Update | Down</pre>
 
     </div>
 </section>
