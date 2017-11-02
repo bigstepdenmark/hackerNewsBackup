@@ -73,6 +73,9 @@
     "post_text": "string"
 }</pre>
 
+        <p>Retrieve Posts</p>
+        <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/posts<hr><span class="tag is-rounded is-dark">RESPONSE</span> Collection</pre>
+
         <p>Retrieve latest digested Post</p>
         <pre class="mar"><span class="tag is-rounded is-warning">GET</span> http://165.227.136.184/api/latest<hr><span class="tag is-rounded is-dark">RESPONSE</span> int</pre>
 

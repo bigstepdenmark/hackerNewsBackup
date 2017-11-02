@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function index()
+    {
+        return UnreadablePost::all();
+    }
+
     public function store( Request $request )
     {
 //        $username = $request->username;

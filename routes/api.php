@@ -47,6 +47,7 @@ Route::middleware( [ 'cors' ] )->prefix( 'comments' )->as( 'comments.' )->group(
 Route::middleware( [ 'cors' ] )->prefix( 'post' )->as( 'post.' )->group( function() {
     Route::post('/', 'PostController@store')->name('store');
 } );
+Route::middleware( [ 'cors' ] )->get('/posts', 'PostController@index')->name('posts.index');
 
 Route::middleware( [ 'cors' ] )->get('/latest', 'PostController@lastPost')->name('latest');
 Route::middleware( [ 'cors' ] )->get('/status', 'PostController@status')->name('status');
