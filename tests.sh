@@ -1,5 +1,5 @@
 #!/bin/bash
 
 # Trigger deployment
-curl -s 'https://forge.laravel.com/servers/154829/sites/403046/deploy/http?token=oPog0OWOVJDScY6DTT5hZgRziXgAtuQOh6CUPseS';
+curl -s 'https://envoyer.io/deploy/lRWSGCknGgkGKCtrNTBQEDJVDlUgr9SafjiITUGy';
 echo 'Deployment triggered!'
