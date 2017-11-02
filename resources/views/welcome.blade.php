@@ -16,9 +16,9 @@
 <section class="section">
     <div class="container">
         <h1 class="title">
-            Welcome to Hacker News API - Group 3
+            Hacker News API DOC - Group 3
         </h1>
-        <p class="subtitle">
+        <p>
             <strong>By</strong> Ismail Cam, Mazlum D. Sert, Mert Turan, Mustafa, Kristijan Krsteski
         </p>
 
