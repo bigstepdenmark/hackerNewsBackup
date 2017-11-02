@@ -6,6 +6,7 @@ use App\Story;
 use App\Type;
 use App\UnreadablePost;
 use Illuminate\Http\Request;
+use function MongoDB\BSON\toJSON;
 
 class PostController extends Controller
 {
@@ -35,15 +36,36 @@ class PostController extends Controller
 //                             'url'        => $url ] );
 //        }
 
-        return UnreadablePost::create( [ 'post' => $request->getContent() ] );
+        if( substr( $request->getContent(), 0, 1 ) == "{" && substr( $request->getContent(), -1 ) == "}" )
+        {
+            if( UnreadablePost::create( [ 'post' => $request->getContent() ] ) )
+            {
+                return response( [ 'data'   => json_decode( $request->getContent() ),
+                                   'status' => [ 'code'        => 200,
+                                                 'description' => 'OK',
+                                                 'message'     => 'Your data successfully persisted.' ] ] );
+            }
+        }
+
+        return response( [ 'status' => [ 'code'        => 400,
+                                         'description' => 'Bad Request',
+                                         'message'     => 'Something went wrong, please try again.' ] ] );
+
+
     }
 
     public function lastPost()
     {
         $post = UnreadablePost::all()->last();
-        $postToArray = json_decode( $post->post, true );
 
-        return $postToArray[ 'hanesst_id' ];
+        if( $post )
+        {
+            $postToArray = json_decode( $post->post, true );
+
+            return $postToArray[ 'hanesst_id' ];
+        }
+
+        return "Nothing to show!";
     }
 
     public function status()
