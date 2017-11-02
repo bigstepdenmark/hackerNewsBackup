@@ -35,7 +35,7 @@ class PostController extends Controller
 //                             'url'        => $url ] );
 //        }
 
-        UnreadablePost::create( [ 'post' => $request->getContent() ] );
+        return UnreadablePost::create( [ 'post' => $request->getContent() ] );
     }
 
     public function lastPost()
