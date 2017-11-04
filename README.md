@@ -1,4 +1,5 @@
 # Hacker News Back-End
+[![Build Status](https://travis-ci.org/bigstepdenmark/hackerNewsBackup.svg?branch=master)](https://travis-ci.org/bigstepdenmark/hackerNewsBackup)
 
 ### Group 3
 - __Lead Developer:__ Ismail Cam
