@@ -7,6 +7,7 @@ use App\Type;
 use App\UnreadablePost;
 use Illuminate\Http\Request;
 use function MongoDB\BSON\toJSON;
+use Illuminate\Support\Facades\Log;
 
 class PostController extends Controller
 {
@@ -40,6 +41,7 @@ class PostController extends Controller
         {
             if( UnreadablePost::create( [ 'post' => $request->getContent() ] ) )
             {
+                Log::info('The data from Simulator successfully persisted.', ['data' => $request->getContent()]);
                 return response( [ 'data'   => json_decode( $request->getContent() ),
                                    'status' => [ 'code'        => 200,
                                                  'description' => 'OK',
@@ -47,6 +49,7 @@ class PostController extends Controller
             }
         }
 
+        Log::error('The data could not be persisted succesfully');
         return response( [ 'status' => [ 'code'        => 400,
                                          'description' => 'Bad Request',
                                          'message'     => 'Something went wrong, please try again.' ] ] );
