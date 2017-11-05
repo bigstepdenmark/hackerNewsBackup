@@ -25,7 +25,7 @@
         <div style="margin-top: 20px">
             <div class="tags has-addons">
                 <span class="tag">Questions</span>
-                <span class="tag is-info">i@bigstep</span>
+                <span class="tag is-primary">i@bigstep</span>
             </div>
 
             <div class="tags has-addons" style="margin-top: -15px">
@@ -34,8 +34,13 @@
             </div>
 
             <div class="tags has-addons" style="margin-top: -15px">
-                <span class="tag">Handover Documentation:</span>
+                <span class="tag">Handover Documentation</span>
                 <span class="tag is-info">https://github.com/HakimiX/Documentation/blob/master/README.md</span>
+            </div>
+
+            <div class="tags has-addons" style="margin-top: -15px">
+                <span class="tag">System logs viewer:</span>
+                <span class="tag is-danger">http://165.227.136.184/logs</span>
             </div>
         </div>
 
