@@ -8,6 +8,11 @@
 - __DevOps:__ Mert Turan
 - __Lead Tester:__ Kristijan Krsteski
 ---
+
+### Rest-API
+- Documentation: [http://165.227.136.184](http://165.227.136.184)
+- System logs: [http://165.227.136.184/logs](http://165.227.136.184/logs)
+---
 ### System Requirements
 ##### Language & Framework
 - PHP 7.1
