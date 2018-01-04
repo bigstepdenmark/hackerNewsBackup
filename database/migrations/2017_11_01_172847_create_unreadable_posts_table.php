@@ -17,6 +17,7 @@ class CreateUnreadablePostsTable extends Migration
             $table->increments('id');
             $table->text('post');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

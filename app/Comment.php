@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property string $comment
+ * @property int|null $hanesst_id
  * @property int|null $parent_id
  * @property int $story_id
  * @property int $user_id

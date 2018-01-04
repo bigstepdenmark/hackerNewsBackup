@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * App\Type
  *
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Story[] $stories
+ * @property mixed title
  * @mixin \Eloquent
  */
 class Type extends Model

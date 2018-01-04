@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Story;
 use App\Type;
 use App\UnreadablePost;
+use App\User;
 use Illuminate\Http\Request;
 use function MongoDB\BSON\toJSON;
 use Illuminate\Support\Facades\Log;
@@ -49,7 +51,8 @@ class PostController extends Controller
             }
         }
 
-        Log::error('The data from simulator could not be persisted succesfully');
+        Log::error( 'The data from simulator could not be persisted succesfully' );
+
         return response( [ 'status' => [ 'code'        => 400,
                                          'description' => 'Bad Request',
                                          'message'     => 'Something went wrong, please try again.' ] ] );
@@ -79,4 +82,79 @@ class PostController extends Controller
 
         return $statuses[ 0 ];
     }
+
+    public function toRealPosts()
+    {
+        $posts = UnreadablePost::all();
+        $storyType = Type::where( 'title', 'story' )->first();
+        $commentType = Type::where( 'title', 'comment' )->first();
+        $storiesData = [];
+        $commentsData = [];
+
+        foreach( $posts as $post )
+        {
+            $body = $this->decodePost( $post );
+
+            if( $this->isType( $storyType, $post ) )
+            {
+                $storiesData[] = [ 'title'      => $body->post_title,
+                                   'text'       => $body->post_text,
+                                   'hanesst_id' => $body->hanesst_id,
+                                   'url'        => $body->post_url,
+                                   'type_id'    => $storyType->id,
+                                   'user_id'    => $this->getUserId( $body->username ),
+                                   'created_at' => $post->created_at ];
+            }
+            elseif( $this->isType( $commentType, $post ) )
+            {
+                $commentsData[] = [ 'comment'    => $body->post_title . " " . $body->post_text . " " . $body->post_url,
+                                    'parent_id'  => $body->post_parent,
+                                    'story_id'   => null,
+                                    'user_id'    => $this->getUserId( $body->username ),
+                                    'hanesst_id' => $body->hanesst_id,
+                                    'created_at' => $post->created_at ];
+            }
+        }
+
+        // Insert Stories
+        Story::insert( $storiesData );
+
+        // Insert Comments
+        Comment::insert( $commentsData );
+
+        // Set Unreadable post status to inported
+        $posts->delete();
+
+        //return dd( json_decode( $posts[ 0 ] )->username );
+    }
+
+    private function isType( Type $type, UnreadablePost $post )
+    {
+        $body = json_decode( $post->post );
+
+        return $body->post_type == $type->title;
+    }
+
+    private function decodePost( UnreadablePost $post )
+    {
+        return json_decode( $post->post );
+    }
+
+    private function getUserId( String $username )
+    {
+        $user = User::where( 'username', $username )->first();
+
+        return $user ? $user->id : -1;
+    }
 }
+
+/*
+ * {"username": "joshwa",
+ * "pwd_hash": "Z1WhBCcNT3",
+ * "post_type": "story",
+ * "post_title": "Important Questions Startup Co-Founders Should Ask Each Other",
+ * "post_text": "",
+ * "post_parent": -1,
+ * "post_url": "http://onstartups.com/home/tabid/3339/bid/99/Important-Questions-Startup-Co-Founders-Should-Ask-Each-Other.aspx",
+ * "hanesst_id": 605}
+ * */

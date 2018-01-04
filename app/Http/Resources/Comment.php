@@ -17,6 +17,7 @@ class Comment extends Resource
     {
         return [ 'id'         => $this->id,
                  'comment'    => $this->comment,
+                 'hanesst_id' => $this->hanesst_id,
                  'parent_id'  => $this->parent === null ? -1 : $this->parent->id,
                  'story_id'   => $this->story === null ? -1 : $this->story->id,
                  'user'       => $this->user === null ? -1 : $this->user->username,
