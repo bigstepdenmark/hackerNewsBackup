@@ -13,13 +13,23 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get( '/test',
+    function() {
+        return response()->json( [ 'user' => [ 'name'         => 'Ismail',
+                                               'username'     => 'Ismail85',
+                                               'karma_points' => 200,
+                                               'about'        => 'Aliquam libero autem voluptates id qui. Doloribus autem amet aut unde. Quaerat occaecati aliquam aut amet iusto quia iste. Omnis et sunt voluptatibus officia.' ] ] );
+    } );
 
-Route::get('hello', function() {
-    return response()->json(['message' => 'Hello world']);
-});
+Route::middleware( 'auth:api' )->get( '/user',
+    function( Request $request ) {
+        return $request->user();
+    } );
+
+Route::get( 'hello',
+    function() {
+        return response()->json( [ 'message' => 'Hello world' ] );
+    } );
 
 
 /*
@@ -27,27 +37,34 @@ Route::get('hello', function() {
 | API Routes
 |--------------------------------------------------------------------------
 */
-Route::middleware( [ 'cors' ] )->prefix( 'users' )->as( 'users.' )->group( function() {
-    Route::get('/', 'UserController@index')->name('index');
-    Route::get('/by-id/{user}', 'UserController@show')->name('show');
-    Route::get('/by-username/{username}', 'UserController@showByUsername')->name('show.byusername');
+Route::prefix( 'users' )->as( 'users.' )->group( function() {
+    Route::get( '/', 'UserController@index' )->name( 'index' );
+    Route::get( '/by-id/{user}', 'UserController@show' )->name( 'show' );
+    Route::get( '/by-username/{username}', 'UserController@showByUsername' )->name( 'show.byusername' );
+    Route::post( '/register', 'UserController@register' )->name( 'register' );
+    Route::post( '/update', 'UserController@update' )->name( 'update' );
 } );
 
-Route::middleware( [ 'cors' ] )->prefix( 'stories' )->as( 'stories.' )->group( function() {
-    Route::get('/', 'StoryController@index')->name('index');
-    Route::get('/{story}', 'StoryController@show')->name('show');
-    Route::get('/{story}/comments', 'StoryController@comments')->name('show.comments');
+Route::post( 'users/update', 'UserController@update' )->name( 'users.update' )->middleware( 'auth:api' );
+Route::post( 'users/updatepass', 'UserController@updatePassword' )->name( 'users.updatepass' )->middleware( 'auth:api' );
+
+Route::prefix( 'stories' )->as( 'stories.' )->group( function() {
+    Route::get( '/', 'StoryController@index' )->name( 'index' );
+    Route::get( '/{story}', 'StoryController@show' )->name( 'show' );
+    Route::get( '/{story}/comments', 'StoryController@comments' )->name( 'show.comments' );
+} );
+Route::post( 'stories/store', 'StoryController@store' )->name( 'story.store' )->middleware( 'auth:api' );
+
+Route::prefix( 'comments' )->as( 'comments.' )->group( function() {
+    Route::get( '/', 'CommentController@index' )->name( 'index' );
+    Route::get( '/{comment}', 'CommentController@show' )->name( 'show' );
 } );
 
-Route::middleware( [ 'cors' ] )->prefix( 'comments' )->as( 'comments.' )->group( function() {
-    Route::get('/', 'CommentController@index')->name('index');
-    Route::get('/{comment}', 'CommentController@show')->name('show');
+Route::prefix( 'post' )->as( 'post.' )->group( function() {
+    Route::post( '/', 'PostController@store' )->name( 'store' );
 } );
 
-Route::middleware( [ 'cors' ] )->prefix( 'post' )->as( 'post.' )->group( function() {
-    Route::post('/', 'PostController@store')->name('store');
-} );
-Route::middleware( [ 'cors' ] )->get('/posts', 'PostController@index')->name('posts.index');
+Route::get( '/posts', 'PostController@index' )->name( 'posts.index' );
 
-Route::middleware( [ 'cors' ] )->get('/latest', 'PostController@lastPost')->name('latest');
-Route::middleware( [ 'cors' ] )->get('/status', 'PostController@status')->name('status');
+Route::get( '/latest', 'PostController@lastPost' )->name( 'latest' );
+Route::get( '/status', 'PostController@status' )->name( 'status' );
